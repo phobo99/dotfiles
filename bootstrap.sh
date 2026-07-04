@@ -12,14 +12,28 @@ fi
 brew analytics off >/dev/null 2>&1 || true
 brew bundle --file "$ROOT/Brewfile"
 
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 packages=(zsh git wezterm codex claude opencode)
 for package in "${packages[@]}"; do
   stow --target "$HOME" --no-folding "$package"
 done
 
-if command -v volta >/dev/null 2>&1; then
-  volta install node@24 pnpm eas-cli
+if ! command -v volta >/dev/null 2>&1; then
+  echo "Volta was not found after brew bundle. Check Homebrew PATH and rerun bootstrap."
+  exit 1
 fi
 
-echo "Dotfiles installed. Restart your terminal to load the new shell."
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
+volta install node@24 pnpm eas-cli
+node -v
+pnpm -v
+eas --version
+
+echo "Dotfiles installed. Restart your terminal to load the new shell."
