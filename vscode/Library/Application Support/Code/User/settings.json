@@ -1,0 +1,147 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  // ===== Core Editor =====
+  "editor.fontFamily": "Liga SFMono Nerd Font, Menlo,'Hack Nerd Font' ,Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.linkedEditing": true,
+  "html.autoClosingTags": true,
+  "js/ts.autoClosingTags.enabled": true,
+  // Cursor & UX
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorWidth": 3,
+  // Font (lighter than Nerd Fonts)
+  "editor.fontSize": 13,
+  "editor.fontWeight": "400",
+  // ===== Files =====
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  // 🔥 Big RAM saver
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/coverage/**": true
+  },
+  // ===== ESLint (scoped, not global-heavy) =====
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  // Avoid background heavy fixes
+  "editor.codeActionsOnSave": {},
+  // ===== TypeScript =====
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsserver.automaticTypeAcquisition.enabled": false,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.tsserver.maxMemory": 4096,
+  // ===== Git (reduce background work) =====
+  "git.autofetch": false,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.replaceTagsWhenPull": true,
+  // ===== Terminal =====
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontFamily": "Liga SFMono Nerd Font",
+  // ===== UI / Workbench =====
+  "workbench.sideBar.location": "right",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.enablePreview": true,
+  // 👇 Enables separate Chat panel on the right
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "chat.viewSessions.orientation": "sideBySide",
+  // ===== Formatting per language =====
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+  },
+  // ===== Emmet / Tailwind =====
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  // Disable heavy Tailwind behavior
+  "tailwindCSS.emmetCompletions": false,
+  // ===== Misc DX =====
+  "js/ts.preferences.quoteStyle": "single",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // ===== Clean UI =====
+  "breadcrumbs.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": true,
+  // ===== Spellcheck =====
+  "cSpell.allowCompoundWords": true,
+  // ===== Telemetry / Noise =====
+  "telemetry.feedback.enabled": false,
+  "redhat.telemetry.enabled": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  // ===== Notebook =====
+  "notebook.codeActionsOnSave": {},
+  // ===== Search =====
+  "search.followSymlinks": false,
+  "cSpell.userWords": [
+    "arbiscan",
+    "arbitrum",
+    "Birdeye",
+    "COOLDOWN",
+    "esbenp",
+    "fdmc",
+    "Fotofolio",
+    "immer",
+    "Liga",
+    "Menlo",
+    "metaplex",
+    "MMKV",
+    "multichain",
+    "notifee",
+    "Notifiactions",
+    "polygonscan",
+    "Pressable",
+    "solana",
+    "solanafm",
+    "Solscan",
+    "suiscan",
+    "Swipeable",
+    "tabnine",
+    "tanstack",
+    "timeframe",
+    "TXNS",
+    "unistyles",
+    "Watchlist",
+    "watchlists",
+    "zksync",
+    "zustand",
+  ],
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+}

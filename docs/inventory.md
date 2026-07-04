@@ -31,10 +31,12 @@ Important installed dependency formulae also worth keeping explicit:
 - android-studio
 - codex
 - codexbar
+- cursor
 - font-sf-mono-nerd-font-ligaturized
 - ghostty
 - ngrok
 - raycast
+- visual-studio-code
 - zulu@17
 
 ## Volta Toolchain

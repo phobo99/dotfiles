@@ -15,6 +15,9 @@
 **/sessions/**
 **/session-env/**
 **/telemetry/**
+**/globalStorage/**
+**/workspaceStorage/**
+**/History/**
 **/cache/**
 **/logs/**
 **/log/**

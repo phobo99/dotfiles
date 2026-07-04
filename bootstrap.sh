@@ -43,10 +43,12 @@ install_or_update_git_repo "https://github.com/romkatv/powerlevel10k.git" "$HOME
 install_or_update_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 install_or_update_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
-packages=(zsh git ghostty codex claude opencode)
+packages=(zsh git ghostty vscode cursor codex claude opencode)
 for package in "${packages[@]}"; do
   stow --target "$HOME" --no-folding "$package"
 done
+
+"$ROOT/scripts/install-editor-extensions.sh"
 
 if ! command -v volta >/dev/null 2>&1; then
   echo "Volta was not found after brew bundle. Check Homebrew PATH and rerun bootstrap."

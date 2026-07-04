@@ -8,7 +8,7 @@ The setup keeps the terminal feature-complete while avoiding unnecessary app sta
 - non-TTY shell guard so scripts and agents do not load prompt/plugin UI
 - Volta-managed Node tooling for `pnpm`, `eas`, and Claude Code
 - Android Studio, Android Platform Tools, Java 17, CocoaPods, Watchman, Docker/Colima
-- Codex, Claude Code, and opencode config, without auth/session files
+- VS Code, Cursor, Codex, Claude Code, and opencode config, without auth/session files
 
 ## Install
 
@@ -26,6 +26,8 @@ If `stow` reports conflicts on an existing machine, move the existing files asid
 zsh/       shell startup files
 git/       global Git config
 ghostty/   Ghostty terminal config
+vscode/    VS Code user settings and extension list
+cursor/    Cursor user settings, keybindings, and extension list
 codex/     Codex config and global instructions
 claude/    Claude Code global instructions/settings
 opencode/  opencode config and instructions
