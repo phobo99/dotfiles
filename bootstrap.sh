@@ -21,19 +21,27 @@ fi
 install_or_update_git_repo() {
   local repo_url="$1"
   local target_dir="$2"
+  local sentinel="${3:-}"
 
   if [[ -d "$target_dir/.git" ]]; then
     git -C "$target_dir" pull --ff-only
+  elif [[ -n "$sentinel" && -e "$target_dir/$sentinel" ]]; then
+    echo "Using existing $target_dir"
+  elif [[ -e "$target_dir" ]]; then
+    local backup_dir="$target_dir.backup.$(date +%Y%m%d%H%M%S)"
+    echo "Backing up existing $target_dir to $backup_dir"
+    mv "$target_dir" "$backup_dir"
+    git clone --depth=1 "$repo_url" "$target_dir"
   else
     git clone --depth=1 "$repo_url" "$target_dir"
   fi
 }
 
 mkdir -p "$HOME/.oh-my-zsh/custom/plugins" "$HOME/.oh-my-zsh/custom/themes"
-install_or_update_git_repo "https://github.com/ohmyzsh/ohmyzsh.git" "$HOME/.oh-my-zsh"
-install_or_update_git_repo "https://github.com/romkatv/powerlevel10k.git" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-install_or_update_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-install_or_update_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+install_or_update_git_repo "https://github.com/ohmyzsh/ohmyzsh.git" "$HOME/.oh-my-zsh" "oh-my-zsh.sh"
+install_or_update_git_repo "https://github.com/romkatv/powerlevel10k.git" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" "powerlevel10k.zsh-theme"
+install_or_update_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+install_or_update_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
 packages=(zsh git ghostty codex claude opencode)
 for package in "${packages[@]}"; do
