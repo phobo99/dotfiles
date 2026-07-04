@@ -18,7 +18,7 @@ elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-packages=(zsh git wezterm codex claude opencode)
+packages=(zsh git codex claude opencode)
 for package in "${packages[@]}"; do
   stow --target "$HOME" --no-folding "$package"
 done

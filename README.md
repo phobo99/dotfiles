@@ -25,7 +25,6 @@ If `stow` reports conflicts on an existing machine, move the existing files asid
 ```text
 zsh/       shell startup files
 git/       global Git config
-wezterm/   terminal config
 codex/     Codex config and global instructions
 claude/    Claude Code global instructions/settings
 opencode/  opencode config and instructions

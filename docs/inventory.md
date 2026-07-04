@@ -32,8 +32,8 @@ Important installed dependency formulae also worth keeping explicit:
 - codex
 - codexbar
 - font-sf-mono-nerd-font-ligaturized
+- ghostty
 - ngrok
-- wezterm
 - zulu@17
 
 ## Volta Toolchain
