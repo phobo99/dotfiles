@@ -8,6 +8,7 @@ The setup keeps the terminal feature-complete while avoiding unnecessary app sta
 - non-TTY shell guard so scripts and agents do not load prompt/plugin UI
 - Volta-managed Node tooling for `pnpm`, `eas`, and Claude Code
 - Android Studio, Android Platform Tools, Java 17, CocoaPods, Watchman, Docker/Colima
+- Chrome, Brave, Zen, Slack, Telegram, Proxyman, Cloudflare WARP, Raycast
 - VS Code, Cursor, Codex, Claude Code, and opencode config, without auth/session files
 
 ## Install

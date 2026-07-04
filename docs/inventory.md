@@ -29,14 +29,21 @@ Important installed dependency formulae also worth keeping explicit:
 
 - android-platform-tools
 - android-studio
+- brave-browser
+- cloudflare-warp
 - codex
 - codexbar
 - cursor
 - font-sf-mono-nerd-font-ligaturized
 - ghostty
+- google-chrome
 - ngrok
+- proxyman
 - raycast
+- slack
+- telegram
 - visual-studio-code
+- zen
 - zulu@17
 
 ## Volta Toolchain
