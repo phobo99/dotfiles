@@ -34,6 +34,7 @@ Important installed dependency formulae also worth keeping explicit:
 - font-sf-mono-nerd-font-ligaturized
 - ghostty
 - ngrok
+- raycast
 - zulu@17
 
 ## Volta Toolchain
