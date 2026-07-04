@@ -27,6 +27,8 @@ Important installed dependency formulae also worth keeping explicit:
 
 ## Homebrew Casks
 
+- android-platform-tools
+- android-studio
 - codex
 - codexbar
 - font-sf-mono-nerd-font-ligaturized

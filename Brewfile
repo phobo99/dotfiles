@@ -21,6 +21,8 @@ brew "rtk"
 # Apps currently installed through Homebrew Cask.
 cask "codex"
 cask "codexbar"
+cask "android-platform-tools"
+cask "android-studio"
 cask "font-sf-mono-nerd-font-ligaturized"
 cask "ngrok"
 cask "wezterm"

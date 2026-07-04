@@ -8,7 +8,7 @@ Generated on 2026-07-04.
 - Removed duplicate `compinit`; completion now uses one cached `compinit -C`.
 - Removed Powerlevel10k startup and `gitstatusd` from new shells.
 - Removed the eager `rbenv init` call from login shell startup; `rbenv` now initializes lazily when called.
-- Kept RN/Expo essentials: Java 17, Android SDK paths, Volta, Bun, pnpm global bin, Watchman via Brewfile, CocoaPods via Brewfile.
+- Kept RN/Expo essentials: Java 17, Android Studio, Android Platform Tools, Android SDK paths, Volta, Bun, pnpm global bin, Watchman via Brewfile, CocoaPods via Brewfile.
 - Kept TUI-agent paths for Codex, Claude, opencode, LM Studio, and Antigravity.
 - Guarded fzf/autosuggest/syntax-highlighting so non-TTY shells used by scripts and agents stay quiet.
 
@@ -55,4 +55,3 @@ Suggested candidates to review manually:
 - Keep Watchman for React Native unless it is known to be idle and unwanted.
 
 No app/package was uninstalled and no launch agent was disabled automatically.
-
