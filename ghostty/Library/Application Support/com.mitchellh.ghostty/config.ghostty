@@ -1,0 +1,67 @@
+# This is the configuration file for Ghostty.
+#
+# Run ghostty +show-config --default --docs to view a list of all available
+# config options and their default values.
+
+theme = TokyoNight Storm
+background-opacity = 0.85
+background-blur-radius = 20
+
+# Frosted dark window
+background = #07111f
+foreground = #f5f7fb
+background-opacity = 0.66
+background-opacity-cells = false
+background-blur = 28
+minimum-contrast = 3
+
+# Apple-like dark palette
+palette = 0=#0b1220
+palette = 1=#ff5f57
+palette = 2=#32d74b
+palette = 3=#ffd60a
+palette = 4=#2f80ed
+palette = 5=#bf5af2
+palette = 6=#64d2ff
+palette = 7=#d7dee9
+palette = 8=#5f6b7a
+palette = 9=#ff7b72
+palette = 10=#5ee787
+palette = 11=#ffe680
+palette = 12=#58a6ff
+palette = 13=#d783ff
+palette = 14=#8be9ff
+palette = 15=#ffffff
+
+# Font
+font-family = Liga SFMono Nerd Font
+font-size = 14
+font-thicken = true
+adjust-cell-height = 2
+minimum-contrast = 1.0
+bold-is-bright = true
+selection-invert-fg-bg = true
+cursor-style-blink = false
+cursor-color = #d7dee9
+cursor-text = #07111f
+cursor-style = underline
+
+# Selection & cursor
+selection-background = #2f80ed
+selection-foreground = #f8fbff
+
+window-padding-x = 16
+window-padding-y = 12
+window-padding-balance = true
+window-padding-color = background
+macos-titlebar-style = transparent
+macos-window-buttons = visible
+window-decoration = auto
+window-theme = dark
+
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+shell-integration = detect
+scrollback-limit = 50000
+copy-on-select = clipboard
+confirm-close-surface = false
