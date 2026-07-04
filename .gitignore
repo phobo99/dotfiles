@@ -1,0 +1,35 @@
+# Secrets and auth state
+**/auth.json
+**/hosts.yml
+**/*token*
+**/*secret*
+**/*credential*
+**/*.pem
+**/*.p8
+**/*.key
+**/.env
+**/.env.*
+
+# Agent/session/cache state
+**/history.jsonl
+**/sessions/**
+**/session-env/**
+**/telemetry/**
+**/cache/**
+**/logs/**
+**/log/**
+**/*.sqlite
+**/*.sqlite-*
+**/*.db
+**/*.db-*
+
+# Generated dependencies and temporary files
+**/node_modules/**
+**/.cache/**
+**/.tmp/**
+**/tmp/**
+backups/**
+.DS_Store
+
+!scripts/
+!scripts/check-secrets.sh
