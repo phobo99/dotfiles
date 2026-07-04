@@ -21,6 +21,7 @@ path=(
   "$HOME/.lmstudio/bin"
   "$HOME/.antigravity/antigravity/bin"
   "$HOME/Library/pnpm/bin"
+  "$ANDROID_HOME/cmdline-tools/latest/bin"
   "$ANDROID_HOME/platform-tools"
   "$ANDROID_HOME/emulator"
   "$HOME/.rbenv/shims"
