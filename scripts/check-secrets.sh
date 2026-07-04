@@ -16,4 +16,10 @@ if rg -n --hidden \
   exit 1
 fi
 
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks detect --source "$ROOT" --no-git --redact
+else
+  echo "gitleaks not found; skipping structured secret scan."
+fi
+
 echo "No obvious secret patterns found."

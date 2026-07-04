@@ -58,10 +58,11 @@ fi
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-volta install node@24 pnpm eas-cli @anthropic-ai/claude-code
+volta install node@24 pnpm eas-cli vercel @anthropic-ai/claude-code
 node -v
 pnpm -v
 eas --version
+vercel --version
 claude --version
 
 echo "Dotfiles installed. Restart your terminal to load the new shell."

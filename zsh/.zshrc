@@ -91,6 +91,10 @@ if [[ "$TERM_PROGRAM" == "kiro" ]] && command -v kiro >/dev/null 2>&1; then
   source "$(kiro --locate-shell-integration-path zsh)"
 fi
 
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
 if [[ -t 0 && -t 1 && -r "$ZSH/oh-my-zsh.sh" ]]; then
   typeset -A ZSH_HIGHLIGHT_STYLES
   ZSH_HIGHLIGHT_STYLES[default]='fg=#ffffff'
