@@ -4,13 +4,14 @@ Generated on 2026-07-04.
 
 ## Shell Changes Applied
 
-- Removed Oh My Zsh from the interactive startup path.
-- Removed duplicate `compinit`; completion now uses one cached `compinit -C`.
-- Removed Powerlevel10k startup and `gitstatusd` from new shells.
+- Restored Oh My Zsh and Powerlevel10k for real terminal sessions.
+- Added bootstrap installation for Oh My Zsh, Powerlevel10k, `zsh-autosuggestions`, and `zsh-syntax-highlighting`.
+- Kept `fzf` and `zoxide` in the Oh My Zsh plugin list; the underlying binaries are installed through Homebrew.
+- Guarded Oh My Zsh, Powerlevel10k, fzf/autosuggest/syntax-highlighting so non-TTY shells used by scripts and agents stay quiet.
+- Removed duplicate manual `compinit`; Oh My Zsh owns completion initialization.
 - Removed the eager `rbenv init` call from login shell startup; `rbenv` now initializes lazily when called.
 - Kept RN/Expo essentials: Java 17, Android Studio, Android Platform Tools, Android SDK paths, Volta, Bun, pnpm global bin, Watchman via Brewfile, CocoaPods via Brewfile.
 - Kept TUI-agent paths for Codex, Claude, opencode, LM Studio, and Antigravity.
-- Guarded fzf/autosuggest/syntax-highlighting so non-TTY shells used by scripts and agents stay quiet.
 
 ## Startup Baseline
 
@@ -28,7 +29,7 @@ zsh -i -c exit
 real 0.02
 ```
 
-This measurement is non-TTY, so real terminal startup will include fzf/autosuggest/syntax-highlighting. It still avoids Oh My Zsh, Powerlevel10k, duplicate completion, and eager rbenv.
+This measurement is non-TTY, so real terminal startup will include Oh My Zsh, Powerlevel10k, fzf, zoxide, autosuggestions, and syntax highlighting. Non-TTY shells still avoid prompt/plugin UI, duplicate completion, and eager rbenv.
 
 ## Large Local State Not Tracked
 

@@ -18,6 +18,23 @@ elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
+install_or_update_git_repo() {
+  local repo_url="$1"
+  local target_dir="$2"
+
+  if [[ -d "$target_dir/.git" ]]; then
+    git -C "$target_dir" pull --ff-only
+  else
+    git clone --depth=1 "$repo_url" "$target_dir"
+  fi
+}
+
+mkdir -p "$HOME/.oh-my-zsh/custom/plugins" "$HOME/.oh-my-zsh/custom/themes"
+install_or_update_git_repo "https://github.com/ohmyzsh/ohmyzsh.git" "$HOME/.oh-my-zsh"
+install_or_update_git_repo "https://github.com/romkatv/powerlevel10k.git" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+install_or_update_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+install_or_update_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
 packages=(zsh git ghostty codex claude opencode)
 for package in "${packages[@]}"; do
   stow --target "$HOME" --no-folding "$package"

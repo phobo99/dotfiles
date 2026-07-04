@@ -1,5 +1,9 @@
-# Fast interactive shell for frontend/RN/Expo work.
+# Interactive shell for frontend/RN/Expo work.
 # Keep this file free of secrets; API keys belong in project-local env files.
+
+if [[ -t 0 && -t 1 && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 [[ $- != *i* ]] && return
 
@@ -12,6 +16,9 @@ export VOLTA_HOME="$HOME/.volta"
 export REACT_EDITOR="cursor"
 export EDITOR="cursor"
 export VISUAL="cursor"
+export ZSH="$HOME/.oh-my-zsh"
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#565f89,italic"
 
 path=(
   "$HOME/.local/bin"
@@ -45,14 +52,18 @@ bindkey -e
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-autoload -Uz compinit
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.zcompcache"
-if [[ -f "$HOME/.zcompdump" ]]; then
-  compinit -C -d "$HOME/.zcompdump"
-else
-  compinit -d "$HOME/.zcompdump"
-fi
+ZSH_COMPDUMP="$HOME/.zcompdump"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(
+  git
+  fzf
+  zoxide
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 if command -v eza >/dev/null 2>&1; then
   alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
@@ -63,14 +74,6 @@ fi
 
 alias c="clear"
 alias grep="grep --color=auto"
-
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh --cmd cd)"
-fi
-
-if [[ -t 0 && -t 1 && -r "$HOME/.fzf.zsh" ]]; then
-  source "$HOME/.fzf.zsh"
-fi
 
 _rbenv_init() {
   unfunction rbenv 2>/dev/null
@@ -88,17 +91,7 @@ if [[ "$TERM_PROGRAM" == "kiro" ]] && command -v kiro >/dev/null 2>&1; then
   source "$(kiro --locate-shell-integration-path zsh)"
 fi
 
-if [[ -t 0 && -t 1 && -r "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#565f89,italic"
-  source "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
-
-autoload -Uz colors
-colors
-PROMPT='%F{cyan}%~%f %(?.%F{green}.%F{red})%#%f '
-RPROMPT=''
-
-if [[ -t 0 && -t 1 && -r "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+if [[ -t 0 && -t 1 && -r "$ZSH/oh-my-zsh.sh" ]]; then
   typeset -A ZSH_HIGHLIGHT_STYLES
   ZSH_HIGHLIGHT_STYLES[default]='fg=#ffffff'
   ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#ffffff'
@@ -107,5 +100,14 @@ if [[ -t 0 && -t 1 && -r "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlightin
   ZSH_HIGHLIGHT_STYLES[alias]='fg=#9ece6a,bold'
   ZSH_HIGHLIGHT_STYLES[path]='fg=#ffffff'
   ZSH_HIGHLIGHT_STYLES[string]='fg=#9ece6a'
-  source "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$ZSH/oh-my-zsh.sh"
+else
+  autoload -Uz colors
+  colors
+  PROMPT='%F{cyan}%~%f %(?.%F{green}.%F{red})%#%f '
+  RPROMPT=''
+fi
+
+if [[ -t 0 && -t 1 && -f "$HOME/.p10k.zsh" ]]; then
+  source "$HOME/.p10k.zsh"
 fi
