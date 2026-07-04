@@ -31,7 +31,6 @@ Important installed dependency formulae also worth keeping explicit:
 - codexbar
 - font-sf-mono-nerd-font-ligaturized
 - ngrok
-- rectangle
 - wezterm
 - zulu@17
 
@@ -101,4 +100,3 @@ System launch agents/daemons observed:
 - Zoom updater and daemon
 
 Do not remove these blindly. Disable only when you no longer use the related app or background behavior.
-

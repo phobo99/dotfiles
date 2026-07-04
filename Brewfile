@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 # Core CLI for a fast frontend/RN/Expo terminal.
 brew "cocoapods"
 brew "colima"
@@ -25,7 +23,5 @@ cask "codex"
 cask "codexbar"
 cask "font-sf-mono-nerd-font-ligaturized"
 cask "ngrok"
-cask "rectangle"
 cask "wezterm"
 cask "zulu@17"
-
