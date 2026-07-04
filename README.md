@@ -26,8 +26,9 @@ If `stow` reports conflicts on an existing machine, move the existing files asid
 zsh/       shell startup files
 git/       global Git config
 ghostty/   Ghostty terminal config
-vscode/    VS Code user settings and extension list
-cursor/    Cursor user settings, keybindings, and extension list
+vscode/    VS Code user settings
+cursor/    Cursor user settings and keybindings
+editors/   VS Code and Cursor extension lists
 codex/     Codex config and global instructions
 claude/    Claude Code global instructions/settings
 opencode/  opencode config and instructions

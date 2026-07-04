@@ -18,6 +18,5 @@ install_extensions() {
   done < "$list_file"
 }
 
-install_extensions code "$ROOT/vscode/extensions.txt"
-install_extensions cursor "$ROOT/cursor/extensions.txt"
-
+install_extensions code "$ROOT/editors/vscode-extensions.txt"
+install_extensions cursor "$ROOT/editors/cursor-extensions.txt"
