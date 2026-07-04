@@ -6,7 +6,7 @@ The setup is intentionally small:
 
 - zsh without Oh My Zsh on the startup path
 - direct loading for `zoxide`, `fzf`, autosuggestions, and syntax highlighting
-- Volta-managed Node tooling for `pnpm` and `eas`
+- Volta-managed Node tooling for `pnpm`, `eas`, and Claude Code
 - Android Studio, Android Platform Tools, Java 17, CocoaPods, Watchman, Docker/Colima
 - Codex, Claude Code, and opencode config, without auth/session files
 

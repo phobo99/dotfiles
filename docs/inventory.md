@@ -41,6 +41,7 @@ Important installed dependency formulae also worth keeping explicit:
 - node 24.16.0
 - eas-cli 20.2.0
 - pnpm 11.5.0
+- @anthropic-ai/claude-code
 
 ## Global npm
 
