@@ -18,10 +18,20 @@ export EDITOR="cursor"
 export VISUAL="cursor"
 export ZSH="$HOME/.oh-my-zsh"
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
+export DISABLE_AUTO_UPDATE="true"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#565f89,italic"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+if [[ -d /opt/homebrew ]]; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+  export HOMEBREW_REPOSITORY="/opt/homebrew"
+fi
 
 path=(
   "$HOME/.local/bin"
+  "${HOMEBREW_PREFIX:-/opt/homebrew}/bin"
+  "${HOMEBREW_PREFIX:-/opt/homebrew}/sbin"
   "$VOLTA_HOME/bin"
   "$BUN_INSTALL/bin"
   "$HOME/.opencode/bin"
@@ -57,6 +67,7 @@ zstyle ':completion:*' cache-path "$HOME/.zcompcache"
 ZSH_COMPDUMP="$HOME/.zcompdump"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZOXIDE_CMD_OVERRIDE="cd"
 plugins=(
   git
   fzf
@@ -64,13 +75,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-
-if command -v eza >/dev/null 2>&1; then
-  alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
-  alias ll="eza --color=always --long --icons=always --git"
-else
-  alias ll="ls -lah"
-fi
 
 alias c="clear"
 alias grep="grep --color=auto"
@@ -110,6 +114,13 @@ else
   colors
   PROMPT='%F{cyan}%~%f %(?.%F{green}.%F{red})%#%f '
   RPROMPT=''
+fi
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+  alias ll="eza --color=always --long --icons=always --git"
+else
+  alias ll="ls -lah"
 fi
 
 if [[ -t 0 && -t 1 && -f "$HOME/.p10k.zsh" ]]; then
