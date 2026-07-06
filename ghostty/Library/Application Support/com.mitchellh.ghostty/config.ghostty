@@ -34,7 +34,12 @@ palette = 14=#8be9ff
 palette = 15=#ffffff
 
 # Font
+# Liga SFMono Nerd Font is missing some Nerd Font glyphs (older/custom
+# patch). Symbols Nerd Font Mono is the official icon-only companion font
+# from the nerd-fonts project; Ghostty falls back to it per-glyph for any
+# codepoint Liga SFMono doesn't have, so the main font stays unchanged.
 font-family = Liga SFMono Nerd Font
+font-family = Symbols Nerd Font Mono
 font-size = 14
 font-thicken = true
 adjust-cell-height = 2

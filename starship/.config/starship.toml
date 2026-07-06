@@ -12,9 +12,6 @@ add_newline = true
 disabled = false
 style = "bold blue"
 
-[os.symbols]
-Macos = "󰀵"
-
 [directory]
 style = "bold cyan"
 truncation_length = 3
@@ -22,7 +19,6 @@ truncate_to_repo = true
 
 [git_branch]
 style = "bold purple"
-symbol = " "
 
 [git_status]
 style = "bold red"
@@ -32,7 +28,6 @@ success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
 
 [nodejs]
-symbol = " "
 style = "bold green"
 
 [cmd_duration]
