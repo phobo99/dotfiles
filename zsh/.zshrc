@@ -30,8 +30,6 @@ fi
 
 path=(
   "$HOME/.local/bin"
-  "${HOMEBREW_PREFIX:-/opt/homebrew}/bin"
-  "${HOMEBREW_PREFIX:-/opt/homebrew}/sbin"
   "$VOLTA_HOME/bin"
   "$BUN_INSTALL/bin"
   "$HOME/.opencode/bin"
@@ -43,6 +41,8 @@ path=(
   "$ANDROID_HOME/emulator"
   "$HOME/.rbenv/shims"
   "$HOME/.rbenv/bin"
+  "${HOMEBREW_PREFIX:-/opt/homebrew}/bin"
+  "${HOMEBREW_PREFIX:-/opt/homebrew}/sbin"
   $path
 )
 export PATH
