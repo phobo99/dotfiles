@@ -1,10 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$os$directory$git_branch$git_status
+$os $directory$git_branch$git_status
 $character"""
 
-right_format = """$nodejs$cmd_duration"""
+right_format = """$docker_context$package$nodejs$direnv$battery$cmd_duration"""
 
 add_newline = true
 
@@ -33,6 +33,21 @@ error_symbol = "[❯](bold red)"
 
 [nodejs]
 style = "bold green"
+
+[package]
+style = "bold 208"
+# RN/Expo package.json is almost always "private": true; the version is
+# still useful to see, it's not sensitive.
+display_private = true
+
+[docker_context]
+style = "bold blue"
+
+[direnv]
+disabled = false
+
+[battery]
+disabled = false
 
 [cmd_duration]
 min_time = 500
