@@ -23,7 +23,7 @@ This repo uses a small `bootstrap.sh` plus GNU Stow:
 
 - Installs Homebrew packages from `Brewfile`.
 - Disables Homebrew analytics.
-- Installs Oh My Zsh, Powerlevel10k, autosuggestions, and syntax highlighting.
+- Installs Oh My Zsh, autosuggestions, and syntax highlighting; prompt is Starship.
 - Stows selected config directories into `$HOME`.
 - Installs VS Code and Cursor extensions from tracked lists.
 - Installs Volta-managed Node tooling: Node 24, `pnpm`, `eas-cli`, `vercel`, and Claude Code.
@@ -34,7 +34,7 @@ This repo uses a small `bootstrap.sh` plus GNU Stow:
 
 Core CLI:
 
-- `git`, `stow`, `ripgrep`, `eza`, `fzf`, `zoxide`
+- `git`, `stow`, `ripgrep`, `eza`, `fzf`, `zoxide`, `starship`, `fd`, `bat`
 - `volta`, `direnv`, `watchman`, `cocoapods`, `rbenv`
 - `docker`, `docker-compose`, `colima`
 - `gh`, `gitleaks`, `scrcpy`, `rtk`, `emojify`
@@ -71,8 +71,9 @@ dotfiles/
 |-- zsh/
 |   |-- .zshenv
 |   |-- .zprofile
-|   |-- .zshrc
-|   `-- .p10k.zsh
+|   `-- .zshrc
+|-- starship/
+|   `-- .config/starship.toml
 |-- git/
 |   `-- .gitconfig
 |-- ghostty/
@@ -96,7 +97,7 @@ dotfiles/
 GNU Stow creates symlinks from this repo into `$HOME`, so the repository remains the source of truth.
 
 ```sh
-stow --target "$HOME" --no-folding zsh git ghostty vscode cursor codex claude opencode
+stow --target "$HOME" --no-folding zsh git ghostty vscode cursor codex claude opencode starship
 ```
 
 2. Do not track local app state
@@ -128,7 +129,7 @@ cd ~/dotfiles
 The script will:
 
 1. Install Homebrew packages and casks from `Brewfile`.
-2. Install or update Oh My Zsh, Powerlevel10k, and zsh plugins.
+2. Install or update Oh My Zsh and zsh plugins (prompt is Starship, installed via Homebrew).
 3. Stow tracked config directories into `$HOME`.
 4. Restore VS Code and Cursor extensions.
 5. Install Volta-managed Node, package, Expo, Vercel, and agent tooling.

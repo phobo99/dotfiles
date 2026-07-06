@@ -1,10 +1,6 @@
 # Interactive shell for frontend/RN/Expo work.
 # Keep this file free of secrets; API keys belong in project-local env files.
 
-if [[ -t 0 && -t 1 && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 [[ $- != *i* ]] && return
 
 typeset -U path PATH
@@ -66,7 +62,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.zcompcache"
 ZSH_COMPDUMP="$HOME/.zcompdump"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""
 export ZOXIDE_CMD_OVERRIDE="cd"
 plugins=(
   git
@@ -160,6 +156,6 @@ else
   alias ll="ls -lah"
 fi
 
-if [[ -t 0 && -t 1 && -f "$HOME/.p10k.zsh" ]]; then
-  source "$HOME/.p10k.zsh"
+if [[ -t 0 && -t 1 ]] && command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
 fi

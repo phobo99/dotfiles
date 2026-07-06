@@ -1,0 +1,40 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$os$directory$git_branch$git_status
+$character"""
+
+right_format = """$nodejs$cmd_duration"""
+
+add_newline = true
+
+[os]
+disabled = false
+style = "bold blue"
+
+[os.symbols]
+Macos = "󰀵"
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "bold purple"
+symbol = " "
+
+[git_status]
+style = "bold red"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[nodejs]
+symbol = " "
+style = "bold green"
+
+[cmd_duration]
+min_time = 500
+style = "bold yellow"
