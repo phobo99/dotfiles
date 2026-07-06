@@ -1,10 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$os $directory$git_branch$git_status
+$os $directory$git_branch$git_status$fill$status$cmd_duration
 $character"""
 
-right_format = """$docker_context$package$nodejs$direnv$battery$cmd_duration"""
+right_format = """$docker_context$package$nodejs$direnv$battery"""
 
 add_newline = true
 
@@ -30,6 +30,13 @@ stashed = '\$${count}'
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
+
+[fill]
+symbol = " "
+
+[status]
+disabled = false
+style = "bold red"
 
 [nodejs]
 style = "bold green"
