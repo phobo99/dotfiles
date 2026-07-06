@@ -11,7 +11,6 @@
       "mcp__argent"
     ]
   },
-  "model": "opus",
   "enabledPlugins": {
     "ui-ux-pro-max@ui-ux-pro-max-skill": false,
     "superpowers@superpowers-marketplace": true
@@ -31,7 +30,7 @@
     }
   },
   "effortLevel": "high",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark-daltonized",
-  "tui": "fullscreen"
+  "theme": "dark-daltonized"
 }

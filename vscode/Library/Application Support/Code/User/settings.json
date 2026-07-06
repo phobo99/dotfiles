@@ -77,7 +77,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode",
