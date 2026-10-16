@@ -17,7 +17,7 @@ Top-level formulae reported by `brew leaves`:
 - rbenv
 - rtk
 - scrcpy
-- volta
+- mise (2026.10.11)
 - watchman
 - zoxide
 
@@ -46,12 +46,25 @@ Important installed dependency formulae also worth keeping explicit:
 - zen
 - zulu@17
 
-## Volta Toolchain
+## mise Toolchain
 
-- node 24.16.0
-- eas-cli 20.2.0
-- pnpm 11.5.0
-- @anthropic-ai/claude-code
+Updated 2026-10-16 (migrated from Volta). Source: `mise/.config/mise/config.toml`.
+
+- node 24.20.0
+- bun 1.4.3
+- pnpm 10.19.0
+- yarn 4.6.0
+- npm:eas-cli 25
+- npm:vercel (latest)
+- npm:@anthropic-ai/claude-code 2.1.201
+- npm:agent-react-devtools 0.4.0
+- npm:@earendil-works/pi-coding-agent 0.74.2
+
+Project pins seen: `bds-user-dashboard` node 24.19.0; `birdeye-mobile` pnpm 11.5.0.
+
+## Vite+
+
+- vp 1.2.0 at `~/.vite-plus` (build toolchain only, `vp env off`; keeps its own internal Node runtime)
 
 ## Global npm
 

@@ -26,7 +26,8 @@ This repo uses a small `bootstrap.sh` plus GNU Stow:
 - Installs Oh My Zsh, autosuggestions, and syntax highlighting; prompt is Starship.
 - Stows selected config directories into `$HOME`.
 - Installs VS Code and Cursor extensions from tracked lists.
-- Installs Volta-managed Node tooling: Node 24, `pnpm`, `eas-cli`, `vercel`, and Claude Code.
+- Installs mise-managed runtimes and global JS tooling from `mise/.config/mise/config.toml`: Node 24.20.0, Bun 1.4.3, `pnpm` 10.19.0, Yarn 4.6.0, `eas-cli` 25, `vercel`, Claude Code, `agent-react-devtools`, and the `pi` coding agent.
+- Installs Vite+ (`vp`) 1.2.0 for builds only, with `vp env off` so it never manages Node or package managers.
 - Keeps non-TTY shells quiet so scripts and agents do not load prompt/plugin UI.
 - Keeps secrets, auth state, browser profiles, telemetry, logs, caches, and SQLite databases out of Git.
 
@@ -35,10 +36,11 @@ This repo uses a small `bootstrap.sh` plus GNU Stow:
 Core CLI:
 
 - `git`, `stow`, `ripgrep`, `eza`, `fzf`, `zoxide`, `starship`, `fd`, `bat`
-- `volta`, `direnv`, `watchman`, `cocoapods`, `rbenv`
+- `mise`, `direnv`, `watchman`, `cocoapods`, `rbenv`
 - `docker`, `docker-compose`, `colima`
 - `gh`, `gitleaks`, `scrcpy`, `rtk`, `emojify`
-- Volta-managed `node@24`, `pnpm`, `eas-cli`, `vercel`, and Claude Code
+- mise-managed Node 24.20.0, Bun 1.4.3, `pnpm` 10.19.0, Yarn 4.6.0, `eas-cli` 25, `vercel`, Claude Code, `agent-react-devtools`, and the `pi` coding agent
+- Vite+ `vp` (official installer, build toolchain only)
 
 Applications:
 
@@ -68,6 +70,8 @@ dotfiles/
 |   |-- manual-app-state.md              # State intentionally restored by login/manual sync
 |   |-- optimization-audit.md            # Shell/app-state optimization notes
 |   `-- security-audit.md                # Current machine security review
+|-- mise/
+|   `-- .config/mise/config.toml         # Global mise toolchain
 |-- zsh/
 |   |-- .zshenv
 |   |-- .zprofile
@@ -97,8 +101,10 @@ dotfiles/
 GNU Stow creates symlinks from this repo into `$HOME`, so the repository remains the source of truth.
 
 ```sh
-stow --target "$HOME" --no-folding zsh git ghostty vscode cursor codex claude opencode starship
+stow --target "$HOME" --no-folding zsh git ghostty vscode cursor codex claude opencode starship mise
 ```
+
+`bootstrap.sh` backs up any real (non-symlink) file in the way, e.g. `~/.zshrc` becomes `~/.zshrc.bak-<timestamp>` before it is linked.
 
 2. Do not track local app state
 
@@ -108,9 +114,25 @@ Browser profiles, cookies, extension state, certificates, VPN state, telemetry, 
 
 The zsh config guards prompt and plugin loading so script and agent shells stay fast and predictable.
 
-4. Use Volta for Node tooling
+4. Use mise for runtimes and global JS tooling
 
-Node, `pnpm`, `eas-cli`, `vercel`, and Claude Code are installed through Volta during bootstrap so JavaScript tooling is versioned outside of Homebrew casks.
+mise (installed by Homebrew) owns Node, Bun, pnpm, Yarn, and global npm CLIs. The global pins live in `mise/.config/mise/config.toml`, stowed to `~/.config/mise/config.toml`; bootstrap runs `mise install` from it. `~/.zshrc` runs `eval "$(mise activate zsh)"` after `. "$HOME/.vite-plus/env"` so mise's Node wins, and `~/.zprofile` loads `mise activate zsh --shims` for login shells that skip `.zshrc` (IDEs, GUI apps, scripts).
+
+Per-project versions:
+
+```sh
+cd my-project
+mise use node@24.19.0 pnpm@11.5.0   # writes mise.toml (commit it)
+mise install                        # installs what the current directory's config needs
+```
+
+Use `mise.local.toml` for personal, uncommitted overrides. `mise install` only installs tools for configs that apply to the current directory (plus the global config).
+
+Update a global tool: `mise use -g npm:eas-cli@25`, then copy the change back into this repo (the stowed file is a symlink, so `mise use -g` edits the repo copy directly).
+
+Vite+ is used only as the build toolchain (`vp build`, `vp check`, `vp test`). Bootstrap installs it with `curl -fsSL https://vite.plus | VP_VERSION=1.2.0 bash` and runs `vp env off`. Use `vp upgrade` to update it and `vp migrate` per repo.
+
+Claude Code note: when installed as `npm:@anthropic-ai/claude-code` under mise its native binary may be missing; bootstrap runs the package's `install.cjs` with `node` if `claude --version` fails.
 
 5. Treat agent configs as sensitive operational config
 
@@ -132,7 +154,8 @@ The script will:
 2. Install or update Oh My Zsh and zsh plugins (prompt is Starship, installed via Homebrew).
 3. Stow tracked config directories into `$HOME`.
 4. Restore VS Code and Cursor extensions.
-5. Install Volta-managed Node, package, Expo, Vercel, and agent tooling.
+5. Install mise-managed Node, Bun, package managers, Expo, Vercel, and agent tooling (`mise install`).
+6. Install Vite+ for builds and run `vp env off`.
 
 After install, check the development toolchain:
 
@@ -200,6 +223,7 @@ The secret scan uses both a lightweight `rg` pattern check and `gitleaks` when a
 When the machine changes meaningfully, update:
 
 - `Brewfile` for installable packages.
+- `mise/.config/mise/config.toml` for global runtimes and JS CLIs.
 - `docs/inventory.md` for observed local apps, launch agents, and tool versions.
 - `docs/development-environment.md` for Expo, React Native, and Next.js setup decisions.
 - `docs/manual-app-state.md` for anything restored by login or manual app setup.

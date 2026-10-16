@@ -10,7 +10,7 @@ Generated on 2026-07-04.
 - Guarded Oh My Zsh, Powerlevel10k, fzf/autosuggest/syntax-highlighting so non-TTY shells used by scripts and agents stay quiet.
 - Removed duplicate manual `compinit`; Oh My Zsh owns completion initialization.
 - Removed the eager `rbenv init` call from login shell startup; `rbenv` now initializes lazily when called.
-- Kept RN/Expo essentials: Java 17, Android Studio, Android Platform Tools, Android SDK paths, Volta, Bun, pnpm global bin, Watchman via Brewfile, CocoaPods via Brewfile.
+- Kept RN/Expo essentials: Java 17, Android Studio, Android Platform Tools, Android SDK paths, mise (replaced the original Volta/Bun setup on 2026-10-16), pnpm global bin, Watchman via Brewfile, CocoaPods via Brewfile.
 - Kept TUI-agent paths for Codex, Claude, opencode, LM Studio, and Antigravity.
 
 ## Startup Baseline
@@ -34,11 +34,11 @@ This measurement is non-TTY, so real terminal startup will include Oh My Zsh, Po
 ## Large Local State Not Tracked
 
 - `.config/superpowers`: 2.8G
-- `.bun`: 2.3G
+- `.bun`: 2.3G (historical, 2026-07-04; Bun now managed by mise)
 - `.cache`: 1.9G
 - `.npm`: 1.4G
 - `.codex`: 830M
-- `.volta`: 454M
+- `.volta`: 454M (historical, 2026-07-04; Volta removed on 2026-10-16)
 - `.claude`: 262M
 
 These are cache/session/tool-state directories, not portable dotfiles. They should stay out of Git.
