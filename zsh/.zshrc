@@ -7,15 +7,13 @@ typeset -U path PATH
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export BUN_INSTALL="$HOME/.bun"
-export VOLTA_HOME="$HOME/.volta"
 export REACT_EDITOR="cursor"
 export EDITOR="cursor"
 export VISUAL="cursor"
 export ZSH="$HOME/.oh-my-zsh"
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export DISABLE_AUTO_UPDATE="true"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#565f89,italic"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#EDF0B2,bold"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 if [[ -d /opt/homebrew ]]; then
@@ -26,8 +24,6 @@ fi
 
 path=(
   "$HOME/.local/bin"
-  "$VOLTA_HOME/bin"
-  "$BUN_INSTALL/bin"
   "$HOME/.opencode/bin"
   "$HOME/.lmstudio/bin"
   "$HOME/.antigravity/antigravity/bin"
@@ -159,3 +155,9 @@ fi
 if [[ -t 0 && -t 1 ]] && command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
+
+# mise (after Vite+ so mise-managed node wins)
+eval "$(mise activate zsh)"

@@ -21,20 +21,29 @@ Installed by `Brewfile`:
 - Chrome, Brave, and Zen for browser testing
 - Proxyman and ngrok for network debugging
 
-Installed by Volta in `bootstrap.sh`:
+Installed by mise in `bootstrap.sh` (`mise install` from `mise/.config/mise/config.toml`):
 
-- Node 24
-- pnpm
-- eas-cli
+- Node 24.20.0
+- Bun 1.4.3
+- pnpm 10.19.0
+- Yarn 4.6.0
+- eas-cli 25
 - vercel
-- @anthropic-ai/claude-code
+- @anthropic-ai/claude-code 2.1.201 (bootstrap runs its `install.cjs` if the native binary is missing)
+- agent-react-devtools 0.4.0
+- @earendil-works/pi-coding-agent 0.74.2
+
+Installed by the official Vite+ installer in `bootstrap.sh`:
+
+- Vite+ `vp` 1.2.0, build toolchain only; `vp env off` leaves Node and package managers to mise
 
 Shell environment:
 
 - `JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - `ANDROID_HOME=$HOME/Library/Android/sdk`
 - Android `cmdline-tools`, `platform-tools`, and `emulator` are added to `PATH`.
-- Volta bin is added to `PATH`.
+- `~/.zshrc` sources `~/.vite-plus/env`, then `eval "$(mise activate zsh)"` so mise-managed tools win.
+- `~/.zprofile` runs `mise activate zsh --shims` for login shells that skip `.zshrc`.
 - `direnv hook zsh` loads automatically when `direnv` is installed.
 
 ## Why These Tools Are Included
@@ -211,7 +220,7 @@ These are not installed by default because they either add extra trust state, in
 
 Recommended per-project files:
 
-- `.nvmrc` or `packageManager` in `package.json` if the project needs a specific Node/package-manager version.
+- `mise.toml` (committed) to pin Node/Bun/pnpm per project, e.g. `mise use node@24.19.0`; `mise.local.toml` for personal uncommitted overrides. mise also reads `.nvmrc`/`.node-version`, and `packageManager` in `package.json` still applies.
 - `.env.example` with non-secret variable names.
 - `.env.local` ignored by Git for Next.js local secrets.
 - `.envrc.example` when using direnv.

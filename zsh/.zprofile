@@ -13,13 +13,9 @@ fi
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export BUN_INSTALL="$HOME/.bun"
-export VOLTA_HOME="$HOME/.volta"
 
 path=(
   "$HOME/.local/bin"
-  "$VOLTA_HOME/bin"
-  "$BUN_INSTALL/bin"
   "$HOME/Library/pnpm/bin"
   "$ANDROID_HOME/cmdline-tools/latest/bin"
   "$ANDROID_HOME/platform-tools"
@@ -29,3 +25,9 @@ path=(
   $path
 )
 export PATH
+
+# mise shims for login shells that skip .zshrc (IDEs, GUI apps, scripts).
+# Interactive shells get full `mise activate` from .zshrc.
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh --shims)"
+fi

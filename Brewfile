@@ -15,7 +15,7 @@ brew "rbenv"
 brew "ripgrep"
 brew "starship"
 brew "stow"
-brew "volta"
+brew "mise"
 brew "watchman"
 brew "zoxide"
 

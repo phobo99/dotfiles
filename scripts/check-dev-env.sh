@@ -48,10 +48,13 @@ check_env() {
 }
 
 echo "Core JavaScript"
+check_command "mise" mise --version
 check_command "Node" node -v
+check_command "Bun" bun --version
 check_command "pnpm" pnpm -v
 check_command "Vercel CLI" vercel --version
 check_command "direnv" direnv version
+check_command "Vite+" "$HOME/.vite-plus/bin/vp" --version
 
 echo
 echo "Expo and React Native"
